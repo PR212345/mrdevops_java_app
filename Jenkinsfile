@@ -34,11 +34,11 @@ pipeline{
                }
             }
         }
-        stage('Static code analysis: Sonarqube'){
+        stage('Static code analysis: sonarQube'){
             steps{
                script{
                    
-                   def SonarQubecredentialsId = 'sonarqube-api'
+                   def SonarQubecredentialsId = 'sonarQube'
                    statiCodeAnalysis(SonarQubecredentialsId)
                }
             }
