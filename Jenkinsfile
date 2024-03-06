@@ -43,11 +43,11 @@ pipeline{
                }
             }
         }
-        stage('Quality Gate Status Check : Sonarqube'){
+        stage('Quality Gate Status Check : sonarQube'){
             steps{
                script{
                    
-                   def SonarQubecredentialsId = 'sonarqube-api'
+                   def SonarQubecredentialsId = 'sonarQube'
                    QualityGateStatus(SonarQubecredentialsId)
                }
             }
