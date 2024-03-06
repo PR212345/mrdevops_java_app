@@ -96,6 +96,18 @@ pipeline{
                }
             }
         }
+        stages {
+        stage('Docker operations') {
+            steps {
+                sh '''
+                    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/g4r5g3k3
+                    docker build -t pr2123450000 .
+                    docker tag pr2123450000:latest public.ecr.aws/g4r5g3k3/pr2123450000:latest
+                    docker push public.ecr.aws/g4r5g3k3/pr2123450000:latest
+                '''
+            }
+        }
+    }
         stage('Docker Image Push : ECR '){
          when { expression {  params.action == 'create' } }
             steps{
