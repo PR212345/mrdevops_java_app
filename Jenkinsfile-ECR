@@ -110,6 +110,9 @@ pipeline{
 
         stage('Docker Image Push : ECR '){
          when { expression {  params.action == 'create' } }
+          options {
+        timeout(time: 5, unit: 'MINUTES') // Set timeout for this stage
+    }
             steps{
                script{
                    
